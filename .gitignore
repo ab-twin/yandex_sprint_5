@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+/.idea/architecture-pro-propdevelopment.iml
+/.idea/git_toolbox_blame.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/vcs.xml
