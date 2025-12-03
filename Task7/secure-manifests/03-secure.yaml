@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod-3
+  namespace: audit-zone
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: nginx
+      image: nginx:alpine
+      securityContext:
+        runAsNonRoot: true  # Запрещаем запуск от root
+        runAsUser: 1000     # Явно указываем non-root пользователя
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
