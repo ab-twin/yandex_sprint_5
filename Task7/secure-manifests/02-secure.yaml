@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secure-pod-2
+  namespace: audit-zone
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - name: nginx
+      image: nginx:alpine
+      securityContext:
+        runAsNonRoot: true
+        readOnlyRootFilesystem: true
+        runAsUser: 1000
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
+      volumeMounts:
+        - name: temp-volume
+          mountPath: /tmp
+          readOnly: true  # Делаем монтирование только для чтения
+  volumes:
+    - name: temp-volume
+      emptyDir: {}  # Заменяем hostPath на emptyDir
