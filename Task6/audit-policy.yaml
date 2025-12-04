@@ -10,10 +10,3 @@ rules:
     resources:
       - group: "*"
         resources: ["*"]
-
-
-minikube ssh "sudo sed -i '/- kube-apiserver/a`
-- --audit-policy-file=/etc/ssl/certs/audit-policy.yaml`
-- --audit-log-path=-`
-- --audit-log-format=json'`
-/etc/kubernetes/manifests/kube-apiserver.yaml"
